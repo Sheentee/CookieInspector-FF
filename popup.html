@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Inspector</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="main-layout">
+        <div class="scrollable-content">
+            <div class="header">
+                <h1>Cookie Inspector</h1>
+                <div style="display: flex; gap: 12px; align-items: flex-end;">
+                    <div class="header-status">
+                        <div class="status-indicator">
+                            <div class="dot online"></div>
+                            <span>Active</span>
+                        </div>
+                        <div class="total-count" id="total-count">0 Cookies</div>
+                    </div>
+                    <button id="import-all-btn" class="btn-icon" title="Import Cookies">
+                        <img src="icons/import.png" alt="Import" width="16" height="16">
+                    </button>
+                    <button id="export-all-btn" class="btn-icon" title="Export All Cookies">
+                        <img src="icons/export.png" alt="Export" width="16" height="16">
+                    </button>
+                </div>
+            </div>
+
+            <div id="cookie-list-container">
+                <div class="no-cookies" id="loading-message">Scanning cookies...</div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="footer-donate" style="display: flex; justify-content: center; align-items: center; gap: 16px;">
+                <a href="https://www.paypal.com/donate/?hosted_button_id=ZB5Y7JEMGEGAS" target="_blank"
+                    class="btn-donate">
+                    Donate with PayPal
+                </a>
+                <span class="label">Cookie Inspector v1.0</span>
+            </div>
+        </div>
+
+        <!-- Export Modal -->
+        <div id="export-modal" class="modal-overlay" style="display: none;">
+            <div class="modal">
+                <h2>Export Cookies</h2>
+                <p id="export-description" class="mb-2" style="color: var(--text-secondary); font-size: 13px;">Select
+                    export format:</p>
+                <div class="export-options">
+                    <button id="btn-copy-clipboard" class="btn-secondary btn-full-width mb-2">Copy to Clipboard
+                        (JSON)</button>
+                    <button id="btn-save-file" class="btn-full-width">Save to File (JSON)</button>
+                </div>
+                <button id="btn-cancel-export" class="btn-secondary mt-3"
+                    style="width: 100%; border: none;">Cancel</button>
+            </div>
+        </div>
+
+        <!-- Import Modal -->
+        <div id="import-modal" class="modal-overlay" style="display: none;">
+            <div class="modal" style="width: 320px;">
+                <h2>Import Cookies</h2>
+                <p class="mb-2" style="color: var(--text-secondary); font-size: 13px;">Paste JSON or upload file:</p>
+
+                <textarea id="import-json-text" class="textarea-field mb-2" rows="5"
+                    placeholder='[{"name": "cookie", "value": "123"...}]'></textarea>
+
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px; margin-top: 8px;">
+                    <span style="font-size: 12px; color: var(--text-secondary);">OR</span>
+                    <input type="file" id="import-file-input" accept=".json"
+                        style="font-size: 12px; color: var(--text-secondary);">
+                </div>
+
+                <div class="export-options">
+                    <button id="btn-confirm-import" class="btn-full-width">Import Cookies</button>
+                </div>
+                <button id="btn-cancel-import" class="btn-secondary mt-3"
+                    style="width: 100%; border: none;">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <script src="popup.js"></script>
+</body>
+
+</html>
