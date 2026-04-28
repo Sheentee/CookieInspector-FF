@@ -16,7 +16,7 @@ Desktop.ini
 .env.production.local
 
 # Build artifacts
-dist/
+dists/
 *.zip
 *.xpi
 *.crx
