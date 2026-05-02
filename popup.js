@@ -231,9 +231,7 @@ document_addEventListener('DOMContentLoaded', async () => {
             header.className = 'domain-header';
 
             const titleContainer = document.createElement('div');
-            titleContainer.style.display = 'flex';
-            titleContainer.style.alignItems = 'center';
-            titleContainer.style.gap = '8px';
+            titleContainer.className = 'domain-title-container';
 
             const domainTitle = document.createElement('span');
             domainTitle.textContent = domain;
@@ -245,10 +243,15 @@ document_addEventListener('DOMContentLoaded', async () => {
             titleContainer.appendChild(domainCount);
 
             const exportBtn = document.createElement('button');
-            exportBtn.className = 'btn-icon';
+            exportBtn.className = 'btn-icon btn-icon-small';
             exportBtn.title = `Export cookies for ${domain}`;
-            exportBtn.innerHTML = '<img src="icons/export.png" alt="Export" width="14" height="14">'; // Use image here too
-            exportBtn.style.padding = '4px';
+            
+            const exportImg = document.createElement('img');
+            exportImg.src = 'icons/export.png';
+            exportImg.alt = 'Export';
+            exportImg.width = 14;
+            exportImg.height = 14;
+            exportBtn.appendChild(exportImg);
             exportBtn.onclick = (e) => {
                 e.stopPropagation();
                 openExportModal(groupCookies, `Exporting ${groupCookies.length} cookies for ${domain}`);
@@ -296,8 +299,8 @@ function createCookieCard(cookie) {
     summaryTitle.appendChild(nameText);
 
     const expandIcon = document.createElement('span');
-    expandIcon.innerHTML = '&#9662;'; // Down arrow
-    expandIcon.style.color = 'var(--text-secondary)';
+    expandIcon.textContent = '▾'; // Down arrow
+    expandIcon.className = 'expand-icon';
 
     summary.appendChild(summaryTitle);
     summary.appendChild(expandIcon);
